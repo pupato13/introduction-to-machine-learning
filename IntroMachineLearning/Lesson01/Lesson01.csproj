@@ -6,11 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Accord" Version="3.8.0" />
     <PackageReference Include="Accord.Controls" Version="3.8.0" />
-    <PackageReference Include="Accord.MachineLearning" Version="3.8.0" />
+    <PackageReference Include="accord.machinelearning" Version="3.8.0" />
     <PackageReference Include="Accord.Statistics" Version="3.8.0" />
     <PackageReference Include="Deedle" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Windows.Forms.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

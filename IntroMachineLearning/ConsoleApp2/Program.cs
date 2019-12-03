@@ -7,18 +7,15 @@ using System;
 using System.IO;
 using System.Linq;
 
-using System.Windows.Forms; // C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\
 
-
-namespace Lesson01
+namespace ConsoleApp2
 {
     class Program
     {
         static readonly string _dataPath
-            = Path.Combine(
-                    Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory)))),
-                    "Data",
-                    "california_housing.csv");
+            = Path.Combine(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory))),
+                "Data",
+                "california_housing.csv");
 
         static void Main(string[] args)
         {
@@ -127,9 +124,7 @@ namespace Lesson01
             // plot the data
             var plot = new Scatterplot("Training", "feature", "label");
             plot.Compute(x, y, c);
-
-            // ScatterplotBox DOESN'T ACCEPT .NET CORE
-            //ScatterplotBox.Show(plot);
+            ScatterplotBox.Show(plot);
         }
     }
 }
