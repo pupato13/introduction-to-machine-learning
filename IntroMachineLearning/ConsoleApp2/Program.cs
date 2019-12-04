@@ -26,6 +26,8 @@ namespace ConsoleApp2
             // This will load the file in memory in a Frame instance.
             var housing = Frame.ReadCsv(_dataPath, separators: ",");
 
+            housing = housing.Where(kv => ((decimal)kv.Value["median_house_value"]) < 500000);
+
             // set up a few series
             var total_rooms = housing["total_rooms"];
             var median_house_value = housing["median_house_value"];
@@ -34,7 +36,7 @@ namespace ConsoleApp2
             // The median_house_value column is in the range from 0 to 500,000. To make these values more manageable, let's divide all values by 1,000:
             median_house_value /= 1000;
 
-            RunningSimpleLinearRegression(total_rooms, median_house_value);
+            RunningSimpleLinearRegression(total_rooms, median_house_value, median_income);
 
             Console.ReadLine();
         }
@@ -48,11 +50,12 @@ namespace ConsoleApp2
         /// </summary>
         /// <param name="total_rooms"></param>
         /// <param name="median_house_value"></param>
-        private static void RunningSimpleLinearRegression(Series<int, double> total_rooms, Series<int, double> median_house_value)
+        private static void RunningSimpleLinearRegression(Series<int, double> total_rooms, Series<int, double> median_house_value, Series<int, double> median_income)
         {
             // set up feature and label
             // This gets us both the input features (total_rooms) and the output labels (median_house_value) as arrays of double.
-            var feature = total_rooms.Values.ToArray();
+            //var feature = total_rooms.Values.ToArray();
+            var feature = median_income.Values.ToArray();
             var labels = median_house_value.Values.ToArray();
 
 
